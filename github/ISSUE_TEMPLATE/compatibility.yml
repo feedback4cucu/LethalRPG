@@ -1,0 +1,71 @@
+name: Compatibility
+description: LethalRPG and another mod do not work together.
+title: "[Compatibility]: "
+labels: ["compatibility", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Some combinations are known and handled: inventory mods switch the Inventory upgrade off, and a few overlaps with LateGameUpgrades and GeneralImprovements are listed in **Known issues & limitations** in the [wiki](https://thunderstore.io/c/lethal-company/p/Cucumis/LethalRPG/wiki/).
+
+        **Privacy:** everything you write here is public. The `rpg report` file leaves out player names, Steam IDs and your Windows user folder.
+  - type: input
+    id: other-mod
+    attributes:
+      label: Other mod and its version
+      description: As shown in your mod manager.
+      placeholder: LateGameUpgrades 3.12.0
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: LethalRPG version
+      placeholder: 0.7.1+a1b2c3d
+    validations:
+      required: true
+  - type: dropdown
+    id: without-other-mod
+    attributes:
+      label: Does the problem go away without the other mod?
+      options:
+        - "Yes"
+        - "No"
+        - Not tested
+    validations:
+      required: true
+  - type: dropdown
+    id: role
+    attributes:
+      label: Who has the other mod?
+      options:
+        - Only the host
+        - Only a client
+        - Everyone
+        - Singleplayer
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happens?
+      description: What you did, what happened, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Bug report from 'rpg report'
+      description: "Type 'rpg report' in the terminal right after the problem and drag the file BepInEx/LethalRPG-report-<date>_<time>.txt here, or paste its text. It lists your other mods too."
+    validations:
+      required: true
+  - type: input
+    id: profile-code
+    attributes:
+      label: Mod manager profile code (optional)
+      description: "r2modman or Thunderstore Mod Manager: Settings, Profile, Export profile as code."
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy
+      options:
+        - label: I removed Steam names, Steam IDs and Windows user paths from everything I attached (the 'rpg report' file leaves them out already).
+          required: true
