@@ -26,5 +26,9 @@ folder.
 
 - Everything here is public. Do not post Steam profile links, names of other players or paths with your Windows user
   name.
+- **Your responsibility:** you decide what you post. The maintainer of LethalRPG is not liable for personal data, Steam
+  names, file paths or any other information that you or others publish in issues, comments or attachments. Issues are
+  public: others can copy, index or archive them, and deleting something later does not reliably remove it everywhere.
+  If you posted something private by mistake, edit or delete it right away.
 - Issues are read about once a week. LethalRPG is a hobby project by one person.
 - LethalRPG is written with the help of an AI assistant (Thunderstore category "AI Generated").

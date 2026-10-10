@@ -69,3 +69,5 @@ body:
       options:
         - label: I removed Steam names, Steam IDs and Windows user paths from everything I attached (the 'rpg report' file leaves them out already).
           required: true
+        - label: I understand that this issue is public and that I am responsible for what I post in it.
+          required: true
