@@ -6,22 +6,27 @@ body:
   - type: markdown
     attributes:
       value: |
-        Some combinations are known and handled: inventory mods switch the Inventory upgrade off, and a few overlaps with LateGameUpgrades and GeneralImprovements are listed in **Known issues & limitations** in the [wiki](https://thunderstore.io/c/lethal-company/p/Cucumis/LethalRPG/wiki/).
+        Some combinations are known and handled: inventory mods switch the Inventory upgrade off, and for the 14 upgrades LateGameUpgrades 3.14.1 has as well, the host's `OverlapPolicy` decides whether both mods' upgrades work or only the one of LateGameUpgrades. These and a few other overlaps (e.g. with GeneralImprovements) are listed in **Known issues & limitations** in the [wiki](https://thunderstore.io/c/lethal-company/p/Cucumis/LethalRPG/wiki/).
+
+        Which mods were tested with LethalRPG 0.10.0, in which versions and what was checked, is in the table **Tests of 0.10.0** on the Compatibility page of the [wiki](https://thunderstore.io/c/lethal-company/p/Cucumis/LethalRPG/wiki/) and in the README of the [package page](https://thunderstore.io/c/lethal-company/p/Cucumis/LethalRPG/). A mod that is not in it is not tested; "not tested yet" there means that no test has passed so far, not that something is wrong. Please check your mod's version against the table.
+
+        In multiplayer the host runs `rpg selftest` first (terminal, or SELF-TEST on the Rules tab) and waits for the result; the host's `rpg report` then has it in its SELF-TEST section.
 
         **Privacy:** everything you write here is public. The `rpg report` file leaves out player names, Steam IDs and your Windows user folder.
   - type: input
     id: other-mod
     attributes:
       label: Other mod and its version
-      description: As shown in your mod manager.
-      placeholder: LateGameUpgrades 3.12.0
+      description: "Name and version as shown in your mod manager. The report below lists all your mods and their versions too. If your version is not the one in 'Tests of 0.10.0', please say so."
+      placeholder: LateGameUpgrades 3.14.1
     validations:
       required: true
   - type: input
     id: version
     attributes:
       label: LethalRPG version
-      placeholder: 0.7.1+a1b2c3d
+      description: "In the bug report ('rpg report'), under VERSIONS: the line 'LethalRPG 0.10.0+a1b2c3d, protocol 4'. Copy the version with its build. Everyone in the lobby needs 0.10.x (0.10.x and 0.9.x do not work together)."
+      placeholder: 0.10.0+a1b2c3d
     validations:
       required: true
   - type: dropdown
@@ -47,14 +52,14 @@ body:
     id: what-happened
     attributes:
       label: What happens?
-      description: What you did, what happened, and what you expected instead.
+      description: "What you did, what happened, and what you expected instead. If LethalRPG said that skills may not work with your mods (when you joined, in 'rpg info' or in the Rules tab), name them."
     validations:
       required: true
   - type: textarea
     id: report
     attributes:
       label: Bug report from 'rpg report'
-      description: "Type 'rpg report' in the terminal right after the problem and drag the file BepInEx/LethalRPG-report-<date>_<time>.txt here, or paste its text. It lists your other mods too."
+      description: "Type 'rpg report' in the terminal right after the problem and drag the file BepInEx/LethalRPG-report-<date>_<time>.txt here, or paste its text. It lists your other mods too and, for skills that may not work fully, the mods that change the game code they need. In multiplayer, the host's report also has the result of 'rpg selftest' (SELF-TEST section), which names mods that manage item slots on only one PC."
     validations:
       required: true
   - type: input

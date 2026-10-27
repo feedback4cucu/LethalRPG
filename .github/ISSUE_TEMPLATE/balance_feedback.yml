@@ -7,11 +7,13 @@ body:
     attributes:
       value: |
         Balance depends a lot on the host's settings, so please tell us which ones you played with. 'rpg info' in the terminal (or the Rules tab of the skill menu) shows them. Numbers help: prices, levels, XP per day, how many quotas you played.
+
+        With 0.10.0 the host can let XP and skills belong to the save (`ProgressScope = Save`): everyone then starts a save with 0 XP and no skills. If your feedback is about XP or skills, tell us which way you played.
   - type: input
     id: version
     attributes:
       label: LethalRPG version
-      placeholder: 0.7.1
+      placeholder: 0.10.0
     validations:
       required: true
   - type: input
@@ -54,7 +56,8 @@ body:
       label: Paid with
       options:
         - SurplusShare (budget from the quota surplus)
-        - GroupCredits
+        - GroupCredits, SplitUpgradePrices off (full price)
+        - GroupCredits with SplitUpgradePrices (personal upgrades only)
   - type: dropdown
     id: share-split
     attributes:
@@ -64,6 +67,21 @@ body:
         - Even
         - FullShareEach
         - Not used (team mode or group credits)
+  - type: dropdown
+    id: progress-scope
+    attributes:
+      label: Where XP and skills are kept (ProgressScope, new in 0.10.0)
+      description: "'rpg info' (or the Rules tab) says it; the host's 'rpg report' has the line 'Progress:' under SESSION. With 'Per save' the SaveScopedSkills setting decides which skills belong to the save (Both, Unique or Ultimate)."
+      options:
+        - In profiles (ProgressScope Profile, the default)
+        - Per save (ProgressScope Save), SaveScopedSkills Both
+        - Per save (ProgressScope Save), SaveScopedSkills Unique or Ultimate
+  - type: input
+    id: other-settings
+    attributes:
+      label: Other host settings (optional)
+      description: "Settings the host changed from their defaults, e.g. RulesPreset, SaveScopedSkills (new in 0.10.0), PriceShareCap, OverlapPolicy or RefundPercent. The host's 'rpg report' lists them under 'CONFIG OF THIS PC'."
+      placeholder: PriceShareCap 2, OverlapPolicy PreferOtherMod
   - type: input
     id: crew
     attributes:

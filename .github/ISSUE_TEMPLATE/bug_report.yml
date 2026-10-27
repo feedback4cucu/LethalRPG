@@ -8,13 +8,15 @@ body:
       value: |
         Thanks for reporting! Please check **Known issues & limitations** in the [wiki](https://thunderstore.io/c/lethal-company/p/Cucumis/LethalRPG/wiki/) first.
 
+        **In multiplayer, the host runs the self-test first:** `rpg selftest` in the terminal (or SELF-TEST on the Rules tab of the skill menu); wait until the page shows the result (usually within a second). It compares every player's LethalRPG with the host's. Then everyone who saw the problem types `rpg report`; the host's report has the result in its SELF-TEST section.
+
         **Privacy:** everything you write here is public. The `rpg report` file leaves out player names, Steam IDs and your Windows user folder. `LogOutput.log` does not: if you attach it, replace Steam names and paths like `C:\Users\<name>` first.
   - type: input
     id: version
     attributes:
       label: LethalRPG version
-      description: "In the bug report ('rpg report'), under VERSIONS: the line 'LethalRPG 0.7.1+a1b2c3d, protocol 1'. Copy the version with its build, e.g. 0.7.1+a1b2c3d"
-      placeholder: 0.7.1+a1b2c3d
+      description: "In the bug report ('rpg report'), under VERSIONS: the line 'LethalRPG 0.10.0+a1b2c3d, protocol 4'. Copy the version with its build, e.g. 0.10.0+a1b2c3d. If you went back to 0.9.0 or older, say so in 'What happened?'."
+      placeholder: 0.10.0+a1b2c3d
     validations:
       required: true
   - type: dropdown
@@ -40,14 +42,23 @@ body:
     id: players
     attributes:
       label: Players in the lobby
-      description: How many, and do all of them have LethalRPG?
-      placeholder: 3, all with LethalRPG
+      description: "How many, and which LethalRPG version each of them has (0.10.x and 0.9.x do not work together). A client's 'rpg report' names the host's version under VERSIONS, in the line 'Host: ...'."
+      placeholder: 3, all with LethalRPG 0.10.0
   - type: textarea
     id: rules
     attributes:
       label: Host settings
       description: "In the host's bug report ('rpg report'), under SESSION: the line 'Rules: ...'. The settings the host changed are under 'CONFIG OF THIS PC' in the same report."
       placeholder: "Rules: SurplusShare 50% ByContribution, Individual, skills Xp, Normal/Standard"
+  - type: dropdown
+    id: progress-scope
+    attributes:
+      label: Where XP and skills are kept (ProgressScope)
+      description: "Matters for problems with XP, skills, resets, profiles or saves. In the host's bug report ('rpg report'), under SESSION: the line 'Progress: in profiles' or 'Progress: per save (SaveScopedSkills ...)'; the 'Rules:' line then has ', progress per save'. A change of ProgressScope applies the next time the host's PC hosts a save."
+      options:
+        - In profiles (ProgressScope Profile, the default)
+        - Per save (ProgressScope Save)
+        - Not sure
   - type: textarea
     id: what-happened
     attributes:
@@ -59,7 +70,7 @@ body:
     id: report
     attributes:
       label: Bug report from 'rpg report'
-      description: "Type 'rpg report' in the terminal (or Rules tab, WRITE BUG REPORT) right after the problem. Drag the file BepInEx/LethalRPG-report-<date>_<time>.txt here, or paste its text. Reports from every player who saw the problem help most."
+      description: "Type 'rpg report' in the terminal (or Rules tab, WRITE BUG REPORT) right after the problem; in multiplayer the host runs 'rpg selftest' first (see above), so the report has its SELF-TEST section. Drag the file BepInEx/LethalRPG-report-<date>_<time>.txt here, or paste its text. Reports from every player who saw the problem help most."
     validations:
       required: true
   - type: input
